@@ -4,8 +4,9 @@ import 'package:meal_sheal/views/home/views/more_tab/view.dart';
 import 'package:meal_sheal/views/home/views/more_tab/views/about_us/view.dart';
 import 'package:meal_sheal/views/home/views/more_tab/views/inbox/view.dart';
 import 'package:meal_sheal/views/home/views/more_tab/views/my_orders/view.dart';
+import 'package:meal_sheal/views/home/views/more_tab/views/my_orders/views/change_address/view.dart';
+import 'package:meal_sheal/views/home/views/more_tab/views/my_orders/views/checkout/view.dart';
 import 'package:meal_sheal/views/home/views/more_tab/views/notifications/view.dart';
-import 'package:meal_sheal/views/home/views/more_tab/views/payment_details/addCard/view.dart';
 import 'package:meal_sheal/views/home/views/more_tab/views/payment_details/view.dart';
 import 'package:meal_sheal/views/home/views/offers_tab/view.dart';
 import 'package:meal_sheal/views/home/views/profile_tab/view.dart';
@@ -40,7 +41,8 @@ class RoutePaths {
   static const String notifications = '/notifications';
   static const String myOrders = '/myOrders';
   static const String paymentDetails = '/payment_details';
-  static const String addCard = '/add_card';
+  static const String checkout = '/checkout';
+  static const String changeAddress = '/changeAddress';
 }
 
 // routing logic
@@ -79,10 +81,6 @@ class MyRouter {
         return MaterialPageRoute(
           builder: (_) => const SplashView(),
         );
-      case RoutePaths.addCard:
-        return MaterialPageRoute(
-          builder: (_) => const AddCardView(),
-        );
       // Tabs
       case RoutePaths.menuTab:
         return MaterialPageRoute(
@@ -120,6 +118,14 @@ class MyRouter {
       case RoutePaths.paymentDetails:
         return MaterialPageRoute(
           builder: (_) => const PaymentDetailsView(),
+        );
+      case RoutePaths.checkout:
+        return MaterialPageRoute(
+          builder: (_) => const CheckoutView(),
+        );
+      case RoutePaths.changeAddress:
+        return MaterialPageRoute(
+          builder: (_) => const ChangeAddressView(),
         );
     }
 

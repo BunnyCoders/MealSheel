@@ -8,7 +8,7 @@ PreferredSize CustomAppBar({
   required BuildContext context,
   String iconPath = 'assets/icons/arrow_left.svg',
   required String text,
-  bool isButton = false,
+  bool isShowCart = false,
   String buttonText = 'Edit',
   String buttonIconPath = 'assets/icons/edit.svg',
   Color buttonColor = DSColors.headingLight,
@@ -44,7 +44,6 @@ PreferredSize CustomAppBar({
                   Icons.arrow_back_ios,
                   color: DSColors.headingDark,
                   size: DSSizes.lg,
-                  
                 ),
               ),
               Text(
@@ -58,15 +57,17 @@ PreferredSize CustomAppBar({
             ],
           ),
           const SizedBox(width: DSSizes.md),
-          IconButton(
-              onPressed: () {
-                // Navigator.pushNamed(context, RoutePaths.home);
-              },
-              icon: const Icon(
-                Icons.shopping_basket,
-                color: DSColors.headingDark,
-                size: DSSizes.lg,
-              ))
+          isShowCart
+              ? IconButton(
+                  onPressed: () {
+                    // Navigator.pushNamed(context, RoutePaths.home);
+                  },
+                  icon: const Icon(
+                    Icons.shopping_basket,
+                    color: DSColors.headingDark,
+                    size: DSSizes.lg,
+                  ))
+              : Container()
         ],
       ),
     ),

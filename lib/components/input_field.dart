@@ -113,7 +113,7 @@ class InputField extends StatelessWidget {
             ),
             filled: true,
             fillColor:
-                enabled ? DSColors.headingLight : DSColors.backgroundBodyGrey,
+                enabled ? DSColors.backgroundBodyGrey : DSColors.backgroundBodyGrey,
             focusedBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(
@@ -128,7 +128,7 @@ class InputField extends StatelessWidget {
             isCollapsed: true,
             hintText: placeholder,
             hintStyle: DSType.body2(
-              textColor: DSColors.placeHolderDark,
+              textColor: DSColors.linkDark,
             ),
           ),
           enabled: enabled,
