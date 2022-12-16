@@ -8,7 +8,7 @@ class Button extends StatelessWidget {
   const Button({
     Key? key,
     this.background = Colors.transparent,
-    this.borderColor = Colors.transparent,
+    this.borderColor = DSColors.primary,
     this.isSmall = false,
     required this.onPressed,
     required this.text,

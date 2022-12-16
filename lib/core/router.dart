@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:meal_sheal/views/home/views/menu_tab/view.dart';
 import 'package:meal_sheal/views/home/views/more_tab/view.dart';
+import 'package:meal_sheal/views/home/views/more_tab/views/about_us/view.dart';
+import 'package:meal_sheal/views/home/views/more_tab/views/inbox/view.dart';
+import 'package:meal_sheal/views/home/views/more_tab/views/my_orders/view.dart';
+import 'package:meal_sheal/views/home/views/more_tab/views/notifications/view.dart';
+import 'package:meal_sheal/views/home/views/more_tab/views/payment_details/addCard/view.dart';
+import 'package:meal_sheal/views/home/views/more_tab/views/payment_details/view.dart';
 import 'package:meal_sheal/views/home/views/offers_tab/view.dart';
 import 'package:meal_sheal/views/home/views/profile_tab/view.dart';
 import 'package:meal_sheal/views/onboarding/view.dart';
@@ -29,6 +35,12 @@ class RoutePaths {
   static const String moreTab = '/moreTab';
   static const String offersTab = '/offersTab';
   static const String profileTab = '/profileTab';
+  static const String aboutUs = '/aboutUs';
+  static const String inbox = '/inbox';
+  static const String notifications = '/notifications';
+  static const String myOrders = '/myOrders';
+  static const String paymentDetails = '/payment_details';
+  static const String addCard = '/add_card';
 }
 
 // routing logic
@@ -67,7 +79,11 @@ class MyRouter {
         return MaterialPageRoute(
           builder: (_) => const SplashView(),
         );
-        // Tabs
+      case RoutePaths.addCard:
+        return MaterialPageRoute(
+          builder: (_) => const AddCardView(),
+        );
+      // Tabs
       case RoutePaths.menuTab:
         return MaterialPageRoute(
           builder: (_) => const MenuTabView(),
@@ -83,6 +99,27 @@ class MyRouter {
       case RoutePaths.profileTab:
         return MaterialPageRoute(
           builder: (_) => const ProfileTabView(),
+        );
+      //More Tabs
+      case RoutePaths.aboutUs:
+        return MaterialPageRoute(
+          builder: (_) => const AboutUsView(),
+        );
+      case RoutePaths.inbox:
+        return MaterialPageRoute(
+          builder: (_) => const InboxView(),
+        );
+      case RoutePaths.notifications:
+        return MaterialPageRoute(
+          builder: (_) => const NotificationsView(),
+        );
+      case RoutePaths.myOrders:
+        return MaterialPageRoute(
+          builder: (_) => const MyOrdersView(),
+        );
+      case RoutePaths.paymentDetails:
+        return MaterialPageRoute(
+          builder: (_) => const PaymentDetailsView(),
         );
     }
 
