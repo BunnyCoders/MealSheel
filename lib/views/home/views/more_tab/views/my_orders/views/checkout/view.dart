@@ -1,28 +1,24 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:meal_sheal/components/appbar.dart';
 import 'package:meal_sheal/components/button.dart';
 import 'package:meal_sheal/components/custom_appbar.dart';
+import 'package:meal_sheal/components/input_field.dart';
 import 'package:meal_sheal/components/page_scaffold.dart';
 import 'package:meal_sheal/core/design_system.dart';
-import 'package:meal_sheal/core/router.dart';
-import 'package:meal_sheal/views/home/views/more_tab/views/payment_details/view_model.dart';
+import 'package:meal_sheal/views/home/views/more_tab/views/my_orders/views/checkout/view_model.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../../components/input_field.dart';
-
-class PaymentDetailsView extends StatefulWidget {
-  const PaymentDetailsView({super.key});
+class CheckoutView extends StatefulWidget {
+  const CheckoutView({super.key});
 
   @override
-  State<PaymentDetailsView> createState() => _PaymentDetailsViewState();
+  State<CheckoutView> createState() => _CheckoutViewState();
 }
 
-class _PaymentDetailsViewState extends State<PaymentDetailsView> {
-  late PaymentDetailsViewModel _viewModel;
+class _CheckoutViewState extends State<CheckoutView> {
+  late CheckoutViewModel _viewModel;
+
   final _formKey = GlobalKey<FormState>();
   late TextEditingController _cardNumberTextFieldController;
   late TextEditingController _firstNameTextFieldController;
@@ -169,70 +165,88 @@ class _PaymentDetailsViewState extends State<PaymentDetailsView> {
     );
   }
 
-  Widget _savedCard() {
+  @override
+  Widget _deliveryAddress() {
     return Center(
-      child: Container(
-        height: 185,
-        width: double.infinity,
-        decoration: const BoxDecoration(
-            shape: BoxShape.rectangle, color: DSColors.backgroundBodyDark),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  Text(
-                    "Cash/Card on delivery",
-                    style: DSType.subtitle1(textColor: DSColors.linkDark),
-                  ),
-                  Icon(
-                    Icons.check,
-                    size: 30,
-                    color: DSColors.primary,
-                  )
-                ],
-              ),
+            Text(
+              "Delivery Address",
+              style: DSType.subtitle1(textColor: DSColors.placeHolderDark),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                children: [
-                  Text(
-                    "VISA",
-                    style: DSType.subtitle1(textColor: DSColors.linkDark),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    Text(
+                      "653 Nostrad Ave.",
+                      style: DSType.subtitle1(textColor: DSColors.linkDark),
+                    ),
+                    Text(
+                      "Brooklyn, NY 11216",
+                      style: DSType.subtitle1(textColor: DSColors.linkDark),
+                    ),
+                  ],
+                ),
+                InkWell(
+                  onTap: () =>
+                      _viewModel.onTapChangeAddressButton(context: context),
+                  child: Text(
+                    "Change",
+                    style: DSType.subtitle2(textColor: DSColors.primary),
                   ),
-                  SizedBox(
-                    width: DSSizes.md,
+                )
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _paymentMethods() {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Payment Methods",
+                  style: DSType.subtitle1(textColor: DSColors.placeHolderDark),
+                ),
+                InkWell(
+                  onTap: () => _addCard(),
+                  child: Text(
+                    "+ Add Card",
+                    style: DSType.subtitle2(textColor: DSColors.primary),
                   ),
-                  Text(
-                    "**** **** **** 2345",
-                    style: DSType.subtitle1(textColor: DSColors.linkDark),
-                  ),
-                  SizedBox(
-                    width: DSSizes.md,
-                  ),
-                  Expanded(
-                      child: Button(
-                    background: DSColors.headingLight,
-                    onPressed: () {},
-                    text: "Debit card",
-                    textColor: DSColors.primary,
-                  ))
-                ],
-              ),
+                )
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                "Other Methods",
-                style: DSType.subtitle1(textColor: DSColors.linkDark),
-                textAlign: TextAlign.left,
-              ),
+            const SizedBox(
+              height: DSSizes.md,
+            ),
+            _paymentMethodType(text: "Cash On Delivery"),
+            const SizedBox(
+              height: DSSizes.sm,
+            ),
+            _paymentMethodType(text: "VISA **** **** **** 1234"),
+            const SizedBox(
+              height: DSSizes.sm,
+            ),
+            _paymentMethodType(text: "UPI"),
+            const SizedBox(
+              height: DSSizes.md,
             ),
           ],
         ),
@@ -240,46 +254,53 @@ class _PaymentDetailsViewState extends State<PaymentDetailsView> {
     );
   }
 
-  Widget _buildUI() {
-    return Center(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          const SizedBox(
-            height: DSSizes.md,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 32.0, right: 16.0),
-            child: Text(
-              "Customized your payment method",
-              style: DSType.h6(textColor: DSColors.linkDark),
+  Widget _paymentMethodType({required String text}) => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          height: 35,
+          decoration: const BoxDecoration(
+            color: DSColors.linkLight,
+            shape: BoxShape.rectangle,
+            border: Border(
+              left: BorderSide(
+                width: 0.5,
+                color: DSColors.placeHolderLight,
+              ),
+              right: BorderSide(
+                width: 0.5,
+                color: DSColors.placeHolderLight,
+              ),
+              top: BorderSide(
+                width: 0.5,
+                color: DSColors.placeHolderLight,
+              ),
+              bottom: BorderSide(
+                width: 0.5,
+                color: DSColors.placeHolderLight,
+              ),
             ),
           ),
-          const Divider(
-            thickness: 1,
-          ),
-          _savedCard(),
-          const SizedBox(
-            height: DSSizes.md,
-          ),
-          Padding(
+          child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Button(
-              background: DSColors.primary,
-              onPressed: () => _showBottomSheetForAddCard(),
-              text: "+ ADD another debit/credit card",
-              textColor: DSColors.backgroundBodyLight,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  text,
+                  style: DSType.subtitle2(textColor: DSColors.linkDark),
+                ),
+                const Icon(
+                  Icons.circle_outlined,
+                  size: 20,
+                  color: DSColors.primary,
+                )
+              ],
             ),
           ),
-          const SizedBox(
-            height: DSSizes.md,
-          ),
-        ],
-      ),
-    );
-  }
+        ),
+      );
 
-  Future<dynamic> _showBottomSheetForAddCard() {
+  Future<dynamic> _addCard() {
     return showModalBottomSheet(
         elevation: 10,
         isScrollControlled: true,
@@ -315,7 +336,7 @@ class _PaymentDetailsViewState extends State<PaymentDetailsView> {
                                 onTap: () {
                                   Navigator.pop(context);
                                 },
-                                child: Icon(
+                                child: const Icon(
                                   Icons.close,
                                   size: 25,
                                   color: DSColors.linkDark,
@@ -323,7 +344,7 @@ class _PaymentDetailsViewState extends State<PaymentDetailsView> {
                           ],
                         ),
                       ),
-                      Divider(
+                      const Divider(
                         thickness: 1,
                       ),
                       const SizedBox(
@@ -340,12 +361,122 @@ class _PaymentDetailsViewState extends State<PaymentDetailsView> {
             ));
   }
 
-  @override
-  Widget build(BuildContext context) {
-    _viewModel = Provider.of<PaymentDetailsViewModel>(context);
+  Widget _subTotal() => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "subtotal",
+              style: DSType.subtitle1(textColor: DSColors.linkDark),
+            ),
+            Text(
+              "68",
+              style: DSType.subtitle1(textColor: DSColors.linkDark),
+            ),
+          ],
+        ),
+      );
 
+  Widget _deliveryCost() => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Delivery Cost",
+              style: DSType.subtitle1(textColor: DSColors.linkDark),
+            ),
+            Text(
+              "02",
+              style: DSType.subtitle1(textColor: DSColors.linkDark),
+            ),
+          ],
+        ),
+      );
+
+  Widget _total() => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Total",
+              style: DSType.subtitle1(textColor: DSColors.linkDark),
+            ),
+            Text(
+              "66",
+              style: DSType.subtitle1(textColor: DSColors.linkDark),
+            ),
+          ],
+        ),
+      );
+
+  Widget _discount() => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Discount",
+              style: DSType.subtitle1(textColor: DSColors.linkDark),
+            ),
+            Text(
+              "-4",
+              style: DSType.subtitle1(textColor: DSColors.linkDark),
+            ),
+          ],
+        ),
+      );
+
+  Widget _sendOrderButton() {
+    return Padding(
+      padding: const EdgeInsets.all(32.0),
+      child: Button(
+        background: DSColors.primary,
+        onPressed: () => _viewModel.onTapSendOrderButton(context: context),
+        text: "Send Order",
+        textColor: DSColors.backgroundBodyLight,
+      ),
+    );
+  }
+
+  Widget _buildUI() {
+    return Center(
+      child: Column(
+        children: [
+          const SizedBox(
+            height: DSSizes.md,
+          ),
+          _deliveryAddress(),
+          const Divider(
+            thickness: 8,
+          ),
+          _paymentMethods(),
+          const Divider(
+            thickness: 8,
+          ),
+          _subTotal(),
+          _deliveryCost(),
+          _discount(),
+          const Divider(
+            thickness: 1,
+          ),
+          _total(),
+          const Divider(
+            thickness: 8,
+          ),
+          _sendOrderButton(),
+        ],
+      ),
+    );
+  }
+
+  Widget build(BuildContext context) {
+    _viewModel = Provider.of<CheckoutViewModel>(context);
     return PageScaffold(
-      appBar: CustomAppBar(context: context, text: "Payment Details"),
+      appBar:
+          CustomAppBar(context: context, text: "Checkout", isShowCart: false),
       children: [_buildUI()],
     );
   }
