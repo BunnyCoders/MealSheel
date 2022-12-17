@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meal_sheal/views/home/views/home_tab/view.dart';
 import 'package:meal_sheal/views/home/views/menu_tab/view.dart';
 import 'package:meal_sheal/views/home/views/more_tab/view.dart';
 import 'package:meal_sheal/views/home/views/more_tab/views/about_us/view.dart';
@@ -32,6 +33,7 @@ class RoutePaths {
   static const String resetPassword = '/resetPassword';
   static const String splash = '/splash';
   static const String signup = '/signup';
+  static const String homeTab = '/homeTab';
   static const String menuTab = '/menuTab';
   static const String moreTab = '/moreTab';
   static const String offersTab = '/offersTab';
@@ -82,6 +84,10 @@ class MyRouter {
           builder: (_) => const SplashView(),
         );
       // Tabs
+      case RoutePaths.homeTab:
+        return MaterialPageRoute(
+          builder: (_) => const HomeTabView(),
+        );
       case RoutePaths.menuTab:
         return MaterialPageRoute(
           builder: (_) => const MenuTabView(),
