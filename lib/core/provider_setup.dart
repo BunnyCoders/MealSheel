@@ -1,5 +1,6 @@
 import 'package:meal_sheal/views/change_password/view_model.dart';
 import 'package:meal_sheal/views/home/view_model.dart';
+import 'package:meal_sheal/views/home/views/home_tab/view_model.dart';
 import 'package:meal_sheal/views/home/views/menu_tab/view_model.dart';
 import 'package:meal_sheal/views/home/views/more_tab/view_model.dart';
 import 'package:meal_sheal/views/home/views/more_tab/views/about_us/view.dart';
@@ -51,6 +52,9 @@ List<SingleChildWidget> providers = [
   ),
 
   //Tabs
+  ChangeNotifierProvider.value(
+    value: HomeTabViewModel(),
+  ),
   ChangeNotifierProvider.value(
     value: MenuTabViewModel(),
   ),

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:meal_sheal/core/design_system.dart';
+import 'package:meal_sheal/views/home/views/home_tab/view.dart';
 import 'package:meal_sheal/views/home/views/menu_tab/view.dart';
 import 'package:meal_sheal/views/home/views/more_tab/view.dart';
 import 'package:meal_sheal/views/home/views/offers_tab/view.dart';
@@ -40,7 +41,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
     super.initState();
         _tabController = TabController(
       initialIndex: widget.selectedPage,
-      length: 4,
+      length: 5,
       vsync: this,
     );
 
@@ -57,6 +58,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
     return TabBarView(
       controller: _tabController,
       children: const <Widget>[
+        HomeTabView(),
         MenuTabView(),
         OffersTabView(),
         ProfileTabView(),
@@ -115,23 +117,28 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
         tabs: <Widget>[
           _tab(
             iconPath: 'assets/icons/menu.svg',
-            text: 'Menu',
+            text: 'Home',
             tabIndex: 0,
+          ),
+          _tab(
+            iconPath: 'assets/icons/menu.svg',
+            text: 'Menu',
+            tabIndex: 1,
           ),
           _tab(
             iconPath: 'assets/icons/offers.svg',
             text: 'Offers',
-            tabIndex: 1,
+            tabIndex: 2,
           ),
           _tab(
             iconPath: 'assets/icons/profile.svg',
             text: 'Profile',
-            tabIndex: 2,
+            tabIndex: 3,
           ),
           _tab(
             iconPath: 'assets/icons/more.svg',
             text: 'More',
-            tabIndex: 3,
+            tabIndex: 4,
           ),
         ],
       ),
