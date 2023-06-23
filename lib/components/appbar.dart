@@ -33,7 +33,7 @@ PreferredSize CustomAppBarWithOutBackButton({
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(width: DSSizes.md),
+              const SizedBox(width: DSSizes.lg),
               Text(
                 text,
                 style: DSType.largeBold(

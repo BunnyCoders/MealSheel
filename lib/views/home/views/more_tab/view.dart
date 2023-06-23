@@ -24,7 +24,7 @@ class _MoreTabViewState extends State<MoreTabView> {
     return SectionWrapper(
       child: Column(
         children: <Widget>[
-          const SizedBox(height: DSSizes.xl),
+          // const SizedBox(height: DSSizes.xl),
           Links(
             iconPath: 'assets/icons/card.svg',
             text: "Payment Details",
@@ -63,7 +63,7 @@ class _MoreTabViewState extends State<MoreTabView> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        const SizedBox(height: DSSizes.lg),
+        const SizedBox(height: DSSizes.md),
         _links(),
       ],
     );
@@ -74,7 +74,7 @@ class _MoreTabViewState extends State<MoreTabView> {
     _viewModel = Provider.of<MoreTabViewModel>(context);
 
     return PageScaffold(
-      appBar: CustomAppBar(
+      appBar: CustomAppBarWithOutBackButton(
         context: context,
         text: 'More',
       ),

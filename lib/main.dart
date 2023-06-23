@@ -37,6 +37,7 @@ class _MyAppState extends State<MyApp> {
         home: const SplashView(),
         initialRoute: RoutePaths.splash,
         onGenerateRoute: MyRouter.generateRoute,
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.red,
           pageTransitionsTheme: const PageTransitionsTheme(
