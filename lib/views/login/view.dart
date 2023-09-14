@@ -121,6 +121,7 @@ class _LoginViewState extends State<LoginView> {
     return Center(
       child: Button(
         background: DSColors.secondary,
+        textColor: DSColors.primary,
         onPressed: () {},
         text: "Login with facebook",
       ),
@@ -172,9 +173,9 @@ class _LoginViewState extends State<LoginView> {
   Widget _header() {
     return Column(
       children: [
-        Text("Login", style: DSType.h4(textColor: DSColors.headingDark)),
+        Text("Login", style: DSType.h5(textColor: DSColors.primaryFontColor)),
         Text("Add your login details",
-            style: DSType.h6(textColor: DSColors.headingDark)),
+            style: DSType.body2(textColor: DSColors.secondaryFontColor)),
       ],
     );
   }

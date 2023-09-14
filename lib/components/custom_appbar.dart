@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -22,7 +24,7 @@ PreferredSize CustomAppBar({
     preferredSize: const Size.fromHeight(DSSizes.xl),
     child: Container(
       decoration: const BoxDecoration(
-        color: DSColors.headingLight,
+        color: DSColors.secondary,
       ),
       padding: const EdgeInsets.only(
         bottom: DSSizes.md,
@@ -31,25 +33,27 @@ PreferredSize CustomAppBar({
         top: 50,
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(width: DSSizes.md),
-              IconButton(
-                onPressed: _onTapBack,
-                icon: const Icon(
-                  Icons.arrow_back_ios,
-                  color: DSColors.headingDark,
-                  size: DSSizes.lg,
+              const SizedBox(width: DSSizes.sm),
+              Center(
+                child: IconButton(
+                  onPressed: _onTapBack,
+                  icon: Icon(
+                    Icons.arrow_back_ios,
+                    color: DSColors.primaryFontColor,
+                    size: 20,
+                  ),
                 ),
               ),
               Text(
                 text,
-                style: DSType.largeBold(
-                  textColor: DSColors.headingDark,
+                style: DSType.h6(
+                  textColor: DSColors.primaryFontColor,
                 ),
                 overflow: TextOverflow.ellipsis,
                 softWrap: true,

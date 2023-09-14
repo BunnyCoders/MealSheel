@@ -2,32 +2,11 @@ import 'package:flutter/material.dart';
 
 class DSColors {
   // primary colors
-  static const Color primary = Color.fromRGBO(252, 96, 17,1);
-  static const Color primaryLight = Color(0xffFF9939);
-  static const Color primaryDark = Color(0xffC35200);
-  static const LinearGradient primaryGradient = LinearGradient(
-    begin: Alignment.topRight,
-    end: Alignment.bottomLeft,
-    colors: <Color>[
-      Color(0xffC35200),
-      Color(0xffFF9939),
-    ],
-    tileMode: TileMode.repeated,
-  );
-
-  // accent colors
-  static const Color secondary = Color(0xff005CAA);
-  static const Color secondaryLight = Color(0xff328EDC);
-  static const Color secondaryDark = Color(0xff003482);
-  static const LinearGradient secondaryGradient = LinearGradient(
-    begin: Alignment.topRight,
-    end: Alignment.bottomLeft,
-    colors: <Color>[
-      Color(0xff003482),
-      Color(0xff328EDC),
-    ],
-    tileMode: TileMode.repeated,
-  );
+  static const Color primary = Color.fromRGBO(252, 96, 17, 1);
+  static const Color secondary = Color.fromRGBO(255, 255, 255, 1);
+  static const Color primaryFontColor = Color.fromRGBO(74, 75, 77, 1);
+  static const Color secondaryFontColor = Color.fromRGBO(124, 125, 126, 1);
+  static const Color placeHolderColor = Color.fromRGBO(182, 187, 187, 1);
 
   // default system colors
   static const Color error = Color(0xffff0000);
@@ -35,11 +14,11 @@ class DSColors {
   static const Color success = Color(0xff25B900);
 
   // typography colors
-  static const Color headingLight = Color(0xffffffff);
-  static const Color headingDark = Color(0xff000000);
-  static const Color bodyLight = Color(0xffffffff);
-  static const Color bodyDark = Color(0xff000000);
-  static const Color placeHolderLight = Color(0xffd2d2d2);
+  static const Color headingLight = Color.fromRGBO(124, 125, 126, 1);
+  static const Color headingDark = Color.fromRGBO(74, 75, 77, 1);
+  static const Color bodyLight = Color.fromRGBO(255, 255, 255, 1);
+  static const Color bodyDark = Color.fromRGBO(0, 0, 0, 0);
+  static const Color placeHolderLight = Color.fromRGBO(182, 187, 187, 1);
   static const Color placeHolderDark = Color(0xffb3b3b3);
   static const Color linkLight = Color(0xfff4f4f4);
   static const Color linkDark = Color(0xff000000);
@@ -67,14 +46,13 @@ class DSColors {
 
 class DSType {
   // static const String _roboto = 'Roboto';
-  static const String _elisalat = 'Etisalat';
-  static const String _monopolis = 'Monopolis';
+  static const String _metropolis = 'Metropolis';
 
   static TextStyle h1({Color textColor = DSColors.primary}) {
     return TextStyle(
       color: textColor,
       // fontFamily: _roboto,
-      fontFamily: _monopolis,
+      fontFamily: _metropolis,
       fontWeight: FontWeight.w300,
       fontSize: 96,
       height: 1,
@@ -86,7 +64,7 @@ class DSType {
     return TextStyle(
       color: textColor,
       // fontFamily: _roboto,
-      fontFamily: _monopolis,
+      fontFamily: _metropolis,
       fontSize: 60,
       fontWeight: FontWeight.w300,
       height: 1,
@@ -98,7 +76,7 @@ class DSType {
     return TextStyle(
       color: textColor,
       // fontFamily: _roboto,
-      fontFamily: _monopolis,
+      fontFamily: _metropolis,
       fontSize: 48,
       fontWeight: FontWeight.w300,
       height: 1,
@@ -110,7 +88,7 @@ class DSType {
     return TextStyle(
       color: textColor,
       // fontFamily: _roboto,
-      fontFamily: _monopolis,
+      fontFamily: _metropolis,
       fontWeight: FontWeight.w400,
       fontSize: 34,
       height: 1.3,
@@ -122,7 +100,7 @@ class DSType {
     return TextStyle(
       color: textColor,
       // fontFamily: _roboto,
-      fontFamily: _monopolis,
+      fontFamily: _metropolis,
       fontSize: 24,
       fontWeight: FontWeight.w500,
       height: 1.3,
@@ -134,7 +112,7 @@ class DSType {
     return TextStyle(
       color: textColor,
       // fontFamily: _roboto,
-      fontFamily: _monopolis,
+      fontFamily: _metropolis,
       fontSize: 20,
       fontWeight: FontWeight.w600,
       height: 1.3,
@@ -146,7 +124,7 @@ class DSType {
     return TextStyle(
       color: textColor,
       // fontFamily: _roboto,
-      fontFamily: _monopolis,
+      fontFamily: _metropolis,
       fontSize: 16,
       fontWeight: FontWeight.w600,
       height: 1.5,
@@ -158,7 +136,7 @@ class DSType {
     return TextStyle(
       color: textColor,
       // fontFamily: _roboto,
-      fontFamily: _monopolis,
+      fontFamily: _metropolis,
       fontSize: 14,
       fontWeight: FontWeight.w600,
       height: 1.5,
@@ -170,7 +148,7 @@ class DSType {
     return TextStyle(
       color: textColor,
       // fontFamily: _roboto,
-      fontFamily: _monopolis,
+      fontFamily: _metropolis,
       fontSize: 16,
       fontWeight: FontWeight.w300,
       height: 1.7,
@@ -182,7 +160,7 @@ class DSType {
     return TextStyle(
       color: textColor,
       // fontFamily: _roboto,
-      fontFamily: _monopolis,
+      fontFamily: _metropolis,
       fontSize: 14,
       fontWeight: FontWeight.w300,
       height: 1.7,
@@ -194,7 +172,7 @@ class DSType {
     return TextStyle(
       color: textColor,
       // fontFamily: _roboto,
-      fontFamily: _monopolis,
+      fontFamily: _metropolis,
       fontSize: 14,
       fontWeight: FontWeight.w700,
       height: 1,
@@ -206,7 +184,7 @@ class DSType {
     return TextStyle(
       color: textColor,
       // fontFamily: _roboto,
-      fontFamily: _monopolis,
+      fontFamily: _metropolis,
       fontSize: 14,
       fontWeight: FontWeight.w400,
       height: 1.7,
@@ -218,7 +196,7 @@ class DSType {
     return TextStyle(
       color: textColor,
       // fontFamily: _roboto,
-      fontFamily: _monopolis,
+      fontFamily: _metropolis,
       fontSize: 10,
       fontWeight: FontWeight.w700,
       height: 1,
@@ -230,7 +208,7 @@ class DSType {
     return TextStyle(
       color: textColor,
       // fontFamily: _roboto,
-      fontFamily: _monopolis,
+      fontFamily: _metropolis,
       fontSize: 14,
       fontWeight: FontWeight.w400,
       height: 1.7,
@@ -242,7 +220,7 @@ class DSType {
     return TextStyle(
       color: textColor,
       // fontFamily: _roboto,
-      fontFamily: _monopolis,
+      fontFamily: _metropolis,
       fontSize: 10,
       fontWeight: FontWeight.w400,
       height: 1.7,
@@ -254,7 +232,7 @@ class DSType {
     return TextStyle(
       color: textColor,
       // fontFamily: _roboto,
-      fontFamily: _monopolis,
+      fontFamily: _metropolis,
       fontSize: 10,
       fontWeight: FontWeight.w300,
       height: 1.5,
@@ -266,18 +244,19 @@ class DSType {
     return TextStyle(
       color: textColor,
       // fontFamily: _roboto,
-      fontFamily: _monopolis,
+      fontFamily: _metropolis,
       fontSize: 12,
       fontWeight: FontWeight.w400,
       height: 1.5,
       letterSpacing: 0.25,
     );
   }
+
   static TextStyle largeBold({Color textColor = DSColors.primary}) {
     return TextStyle(
       color: textColor,
       // fontFamily: _roboto,
-      fontFamily: _monopolis,
+      fontFamily: _metropolis,
       fontSize: 28,
       fontWeight: FontWeight.bold,
       height: 1.3,

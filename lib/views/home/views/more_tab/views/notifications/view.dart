@@ -63,8 +63,14 @@ class _NotificationsViewState extends State<NotificationsView> {
   Widget build(BuildContext context) {
     _viewModel = Provider.of<NotificationsViewModel>(context);
     return PageScaffold(
-      appBar: CustomAppBar(context: context, text: "Notifications"),
-      children: [_buildUI()],
+      appBar: CustomAppBar(
+        context: context,
+        text: "Notifications",
+        isShowCart: true,
+      ),
+      children: [
+        _buildUI(),
+      ],
     );
   }
 }

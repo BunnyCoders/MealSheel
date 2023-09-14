@@ -13,7 +13,6 @@ class AboutUsView extends StatefulWidget {
 
 class _AboutUsViewState extends State<AboutUsView> {
   Widget _aboutUsText() => Container(
-    
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -31,13 +30,21 @@ class _AboutUsViewState extends State<AboutUsView> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: <Widget>[
-            const SizedBox(height: DSSizes.md,),
+            const SizedBox(
+              height: DSSizes.md,
+            ),
             _aboutUsText(),
-            const SizedBox(height: DSSizes.sm,),
+            const SizedBox(
+              height: DSSizes.sm,
+            ),
             _aboutUsText(),
-            const SizedBox(height: DSSizes.md,),
+            const SizedBox(
+              height: DSSizes.md,
+            ),
             _aboutUsText(),
-            const SizedBox(height: DSSizes.md,),
+            const SizedBox(
+              height: DSSizes.md,
+            ),
           ],
         ),
       ),
@@ -47,8 +54,14 @@ class _AboutUsViewState extends State<AboutUsView> {
   @override
   Widget build(BuildContext context) {
     return PageScaffold(
-      appBar: CustomAppBar(context: context, text: "About US"),
-      children: [_buildUI()],
+      appBar: CustomAppBar(
+        context: context,
+        text: "About US",
+        isShowCart: true,
+      ),
+      children: [
+        _buildUI(),
+      ],
     );
   }
 }

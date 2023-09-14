@@ -43,7 +43,7 @@ class IconLink extends StatelessWidget {
             const SizedBox(width: DSSizes.md),
             Text(
               text,
-              style: DSType.body2(textColor: DSColors.primaryDark),
+              style: DSType.body2(textColor: DSColors.primary),
             ),
           ],
         ),

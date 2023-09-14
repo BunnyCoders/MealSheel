@@ -19,62 +19,93 @@ class MyOrdersView extends StatefulWidget {
 class _MyOrdersViewState extends State<MyOrdersView> {
   late MyOrdersViewModel _viewModel;
   Widget _ordersTopArea() {
-    return Center(
-      child: Column(
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.13,
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+        color: DSColors.secondary,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade500,
+            spreadRadius: 5,
+            blurRadius: 0.5,
+            offset: Offset(0, 1),
+          )
+        ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
-              Card(
-                elevation: 2,
+              Padding(
+                padding: EdgeInsets.all(12),
+              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
                 child: Image.asset(
                   "assets/images/burger.jpeg",
-                  height: 70,
-                  width: 70,
+                  height: 100,
+                  width: 100,
                 ),
               ),
-              const SizedBox(
-                width: DSSizes.md,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    "King Burgers",
-                    style: DSType.h6(
-                      textColor: DSColors.linkDark,
-                    ),
-                  ),
-                  Row(
-                    // mainAxisAlignment: MainAxisAlignment.start,
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: [
-                      Icon(
-                        Icons.star,
-                        size: 10,
-                        color: DSColors.primary,
+              // const SizedBox(
+              //   width: DSSizes.xs,
+              // ),
+              Padding(
+                padding: EdgeInsets.only(
+                  left: 12,
+                  right: 12,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "King Burgers",
+                      style: DSType.h6(
+                        textColor: DSColors.primaryFontColor,
                       ),
-                      Text(
-                        "(4.9)",
-                        style: DSType.subtitle2(
-                          textColor: DSColors.primary,
+                    ),
+                    Row(
+                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: [
+                        Icon(
+                          Icons.star,
+                          size: 15,
+                          color: DSColors.primary,
                         ),
+                        Text(
+                          "4.9",
+                          style: DSType.subtitle2(
+                            textColor: DSColors.primary,
+                          ),
+                        ),
+                        Text(
+                          "(124 ratings)",
+                          style: DSType.subtitle2(
+                            textColor: DSColors.secondaryFontColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      "Burger , Western Food",
+                      style: DSType.subtitle2(
+                        textColor: DSColors.placeHolderDark,
                       ),
-                    ],
-                  ),
-                  Text(
-                    "Burger , Western Food",
-                    style: DSType.subtitle2(
-                      textColor: DSColors.placeHolderDark,
                     ),
-                  ),
-                  Text(
-                    "No. 03, 4th Lane, New York",
-                    style: DSType.subtitle2(
-                      textColor: DSColors.placeHolderDark,
+                    Text(
+                      "No. 03, 4th Lane, New York",
+                      style: DSType.subtitle2(
+                        textColor: DSColors.placeHolderDark,
+                      ),
                     ),
-                  ),
-                ],
-              )
+                  ],
+                ),
+              ),
             ],
           )
         ],
@@ -119,11 +150,11 @@ class _MyOrdersViewState extends State<MyOrdersView> {
         children: [
           Text(
             foodName,
-            style: DSType.subtitle2(textColor: DSColors.linkDark),
+            style: DSType.subtitle2(textColor: DSColors.secondaryFontColor),
           ),
           Text(
             price,
-            style: DSType.subtitle2(textColor: DSColors.linkDark),
+            style: DSType.subtitle2(textColor: DSColors.secondaryFontColor),
           )
         ],
       );
@@ -135,7 +166,7 @@ class _MyOrdersViewState extends State<MyOrdersView> {
           children: [
             Text(
               "Delivery Instructions",
-              style: DSType.subtitle1(textColor: DSColors.linkDark),
+              style: DSType.subtitle1(textColor: DSColors.primaryFontColor),
             ),
             InkWell(
               onTap: () {},
@@ -154,7 +185,7 @@ class _MyOrdersViewState extends State<MyOrdersView> {
           children: [
             Text(
               "subtotal",
-              style: DSType.subtitle1(textColor: DSColors.linkDark),
+              style: DSType.subtitle1(textColor: DSColors.primaryFontColor),
             ),
             Text(
               "68",
@@ -170,7 +201,7 @@ class _MyOrdersViewState extends State<MyOrdersView> {
           children: [
             Text(
               "Delivery Cost",
-              style: DSType.subtitle1(textColor: DSColors.linkDark),
+              style: DSType.subtitle1(textColor: DSColors.primaryFontColor),
             ),
             Text(
               "02",
@@ -186,11 +217,11 @@ class _MyOrdersViewState extends State<MyOrdersView> {
           children: [
             Text(
               "Total",
-              style: DSType.subtitle1(textColor: DSColors.linkDark),
+              style: DSType.subtitle1(textColor: DSColors.primaryFontColor),
             ),
             Text(
               "70",
-              style: DSType.subtitle1(textColor: DSColors.primary),
+              style: DSType.h6(textColor: DSColors.primary),
             ),
           ],
         ),
@@ -203,7 +234,7 @@ class _MyOrdersViewState extends State<MyOrdersView> {
         background: DSColors.primary,
         onPressed: () => _viewModel.onTapCheckOutButton(context: context),
         text: "Checkout",
-        textColor: DSColors.backgroundBodyLight,
+        textColor: DSColors.secondary,
       ),
     );
   }
@@ -213,6 +244,7 @@ class _MyOrdersViewState extends State<MyOrdersView> {
       child: Column(
         children: <Widget>[
           _ordersTopArea(),
+
           _orderMiddleArea(),
           _deliveryInstructions(),
           Divider(
@@ -238,8 +270,14 @@ class _MyOrdersViewState extends State<MyOrdersView> {
   Widget build(BuildContext context) {
     _viewModel = Provider.of<MyOrdersViewModel>(context);
     return PageScaffold(
-      appBar: CustomAppBar(context: context, text: "My Orders"),
-      children: [_buildUI()],
+      appBar: CustomAppBar(
+        context: context,
+        text: "My Orders",
+        // isShowCart: true,
+      ),
+      children: [
+        _buildUI(),
+      ],
     );
   }
 }

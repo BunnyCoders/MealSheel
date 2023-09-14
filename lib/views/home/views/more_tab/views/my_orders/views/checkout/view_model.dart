@@ -18,4 +18,9 @@ class CheckoutViewModel extends ChangeNotifier {
       RoutePaths.changeAddress,
     );
   }
+  void onTapBackToHome({required BuildContext context}) {
+    Navigator.of(context).pushNamed(
+      RoutePaths.home,
+    );
+  }
 }

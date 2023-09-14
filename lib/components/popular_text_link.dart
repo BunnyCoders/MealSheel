@@ -23,7 +23,7 @@ class PopularTextHeadingLink extends StatelessWidget {
               Text(
                 text,
                 style: DSType.h6(
-                  textColor: DSColors.linkDark,
+                  textColor: DSColors.primaryFontColor,
                 ),
               ),
               TextButton(

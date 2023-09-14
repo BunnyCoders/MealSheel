@@ -12,7 +12,7 @@ class Button extends StatelessWidget {
     this.isSmall = false,
     required this.onPressed,
     required this.text,
-    this.textColor = DSColors.headingLight,
+    this.textColor = DSColors.secondary,
   }) : super(key: key);
 
   final bool isSmall;
