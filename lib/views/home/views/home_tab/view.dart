@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:meal_sheal/components/appbar.dart';
 import 'package:meal_sheal/components/custom_search_bar.dart';
@@ -28,8 +29,8 @@ class _HomeTabViewState extends State<HomeTabView> {
         children: [
           Text(
             "Delivering to",
-            style: DSType.subtitle1(
-              textColor: DSColors.placeHolderLight,
+            style: DSType.smallBold(
+              textColor: DSColors.secondaryFontColor,
             ),
           ),
           Row(
@@ -37,12 +38,15 @@ class _HomeTabViewState extends State<HomeTabView> {
               Text(
                 "Current Location",
                 style: DSType.subtitle1(
-                  textColor: DSColors.primary,
+                  textColor: DSColors.primaryFontColor,
                 ),
               ),
+              SizedBox(
+                width: DSSizes.sm,
+              ),
               Icon(
-                Icons.arrow_downward_sharp,
-                size: DSSizes.md,
+                Icons.arrow_drop_down,
+                size: DSSizes.lg,
                 color: DSColors.primary,
               )
             ],
@@ -89,7 +93,7 @@ class _HomeTabViewState extends State<HomeTabView> {
                 ),
                 Text(
                   _viewModel.catNames[index],
-                  style: DSType.subtitle2(textColor: DSColors.linkDark),
+                  style: DSType.subtitle2(textColor: DSColors.primaryFontColor),
                 )
               ],
             );
@@ -149,7 +153,7 @@ class _HomeTabViewState extends State<HomeTabView> {
               ),
               Text(
                 _viewModel.popularRestaurantsNames[index],
-                style: DSType.h6(textColor: DSColors.linkDark),
+                style: DSType.h6(textColor: DSColors.primaryFontColor),
               ),
               Row(
                 children: [
@@ -220,7 +224,7 @@ class _HomeTabViewState extends State<HomeTabView> {
                     children: [
                       Text(
                         _viewModel.popularRestaurantsNames[index],
-                        style: DSType.h6(textColor: DSColors.linkDark),
+                        style: DSType.h6(textColor: DSColors.primaryFontColor),
                       ),
                       Row(
                         children: [
@@ -292,7 +296,7 @@ class _HomeTabViewState extends State<HomeTabView> {
                 ),
                 Text(
                   _viewModel.popularRestaurantsNames[index],
-                  style: DSType.h6(textColor: DSColors.linkDark),
+                  style: DSType.h6(textColor: DSColors.primaryFontColor),
                 ),
                 Row(
                   children: [
@@ -340,9 +344,13 @@ class _HomeTabViewState extends State<HomeTabView> {
   Widget build(BuildContext context) {
     _viewModel = Provider.of<HomeTabViewModel>(context);
     return PageScaffold(
-      appBar:
-          CustomAppBarWithOutBackButton(context: context, text: "Hello John!"),
-      children: [_buildUI()],
+      appBar: CustomAppBarWithOutBackButton(
+        context: context,
+        text: "Hello John!",
+      ),
+      children: [
+        _buildUI(),
+      ],
     );
   }
 }

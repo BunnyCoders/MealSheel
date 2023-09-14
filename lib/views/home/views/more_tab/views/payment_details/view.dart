@@ -74,7 +74,7 @@ class _PaymentDetailsViewState extends State<PaymentDetailsView> {
               Expanded(
                 child: Text(
                   "Expiry",
-                  style: DSType.subtitle2(textColor: DSColors.linkDark),
+                  style: DSType.subtitle2(textColor: DSColors.primaryFontColor),
                 ),
               ),
               const SizedBox(
@@ -141,8 +141,8 @@ class _PaymentDetailsViewState extends State<PaymentDetailsView> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "You can remove this card at any time",
-                style: DSType.subtitle2(textColor: DSColors.linkDark),
+                "you can remove this card \n at any time",
+                style: DSType.subtitle2(textColor: DSColors.secondaryFontColor),
               ),
               CupertinoSwitch(
                 value: true,
@@ -175,20 +175,28 @@ class _PaymentDetailsViewState extends State<PaymentDetailsView> {
         height: 185,
         width: double.infinity,
         decoration: const BoxDecoration(
-            shape: BoxShape.rectangle, color: DSColors.backgroundBodyDark),
+            shape: BoxShape.rectangle,
+            color: DSColors.backgroundBodyDark,
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey,
+                  blurRadius: 20.0,
+                  offset: Offset(0.0, 5.0)),
+            ]),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(DSSizes.md),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
                   Text(
                     "Cash/Card on delivery",
-                    style: DSType.subtitle1(textColor: DSColors.linkDark),
+                    style:
+                        DSType.subtitle1(textColor: DSColors.primaryFontColor),
                   ),
                   Icon(
                     Icons.check,
@@ -198,39 +206,48 @@ class _PaymentDetailsViewState extends State<PaymentDetailsView> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                children: [
-                  Text(
-                    "VISA",
-                    style: DSType.subtitle1(textColor: DSColors.linkDark),
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(DSSizes.sm),
+                child: Container(
+                  height: DSSizes.xl,
+                  width: double.infinity,
+                  child: Row(
+                    children: [
+                      Text(
+                        "VISA",
+                        style: DSType.subtitle1(
+                            textColor: DSColors.primaryFontColor),
+                      ),
+                      SizedBox(
+                        width: DSSizes.md,
+                      ),
+                      Text(
+                        "**** **** **** 2345",
+                        style: DSType.subtitle1(
+                            textColor: DSColors.primaryFontColor),
+                      ),
+                      SizedBox(
+                        width: DSSizes.md,
+                      ),
+                      Expanded(
+                          child: Button(
+                        isSmall: true,
+                        background: DSColors.secondary,
+                        onPressed: () {},
+                        text: "Debit card",
+                        textColor: DSColors.primary,
+                      ))
+                    ],
                   ),
-                  SizedBox(
-                    width: DSSizes.md,
-                  ),
-                  Text(
-                    "**** **** **** 2345",
-                    style: DSType.subtitle1(textColor: DSColors.linkDark),
-                  ),
-                  SizedBox(
-                    width: DSSizes.md,
-                  ),
-                  Expanded(
-                      child: Button(
-                    background: DSColors.headingLight,
-                    onPressed: () {},
-                    text: "Debit card",
-                    textColor: DSColors.primary,
-                  ))
-                ],
+                ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.only(left: 8.0),
               child: Text(
                 "Other Methods",
-                style: DSType.subtitle1(textColor: DSColors.linkDark),
+                style: DSType.subtitle1(textColor: DSColors.primaryFontColor),
                 textAlign: TextAlign.left,
               ),
             ),
@@ -249,16 +266,25 @@ class _PaymentDetailsViewState extends State<PaymentDetailsView> {
             height: DSSizes.md,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 32.0, right: 16.0),
+            padding: const EdgeInsets.all(
+              DSSizes.md,
+            ),
             child: Text(
               "Customized your payment method",
-              style: DSType.h6(textColor: DSColors.linkDark),
+              style: DSType.h6(textColor: DSColors.primaryFontColor),
             ),
           ),
           const Divider(
             thickness: 1,
+            indent: 25,
+            endIndent: 25,
           ),
-          _savedCard(),
+          Padding(
+            padding: const EdgeInsets.all(
+              DSSizes.md,
+            ),
+            child: _savedCard(),
+          ),
           const SizedBox(
             height: DSSizes.md,
           ),
@@ -295,21 +321,21 @@ class _PaymentDetailsViewState extends State<PaymentDetailsView> {
               builder: (context, scrollController) => SingleChildScrollView(
                 controller: scrollController,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(DSSizes.sm),
                   child: Column(
                     children: [
                       const SizedBox(
                         height: DSSizes.sm,
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(DSSizes.sm),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               "Add credit/debit card",
                               style: DSType.subtitle1(
-                                  textColor: DSColors.linkDark),
+                                  textColor: DSColors.primaryFontColor),
                             ),
                             GestureDetector(
                                 onTap: () {
@@ -317,8 +343,8 @@ class _PaymentDetailsViewState extends State<PaymentDetailsView> {
                                 },
                                 child: Icon(
                                   Icons.close,
-                                  size: 25,
-                                  color: DSColors.linkDark,
+                                  size: DSSizes.md,
+                                  color: DSColors.primaryFontColor,
                                 )),
                           ],
                         ),
@@ -345,7 +371,8 @@ class _PaymentDetailsViewState extends State<PaymentDetailsView> {
     _viewModel = Provider.of<PaymentDetailsViewModel>(context);
 
     return PageScaffold(
-      appBar: CustomAppBar(context: context, text: "Payment Details"),
+      appBar: CustomAppBar(
+          context: context, text: "Payment Details", isShowCart: true),
       children: [_buildUI()],
     );
   }

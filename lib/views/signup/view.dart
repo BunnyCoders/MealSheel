@@ -157,9 +157,9 @@ class _SignUpViewState extends State<SignUpView> {
   Widget _header() {
     return Column(
       children: [
-        Text("Sign Up", style: DSType.h4(textColor: DSColors.headingDark)),
+        Text("Sign Up", style: DSType.h5(textColor: DSColors.primaryFontColor)),
         Text("Add your details to sign up",
-            style: DSType.h6(textColor: DSColors.headingDark)),
+            style: DSType.body2(textColor: DSColors.secondaryFontColor)),
       ],
     );
   }

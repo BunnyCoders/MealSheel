@@ -18,11 +18,11 @@ PreferredSize CustomAppBarWithOutBackButton({
     preferredSize: const Size.fromHeight(DSSizes.xl),
     child: Container(
       decoration: const BoxDecoration(
-        color: DSColors.headingLight,
+        color: DSColors.secondary,
       ),
       padding: const EdgeInsets.only(
         bottom: DSSizes.md,
-        // left: DSSizes.sm,
+        left: 0,
         right: DSSizes.sm,
         top: 50,
       ),
@@ -36,8 +36,8 @@ PreferredSize CustomAppBarWithOutBackButton({
               const SizedBox(width: DSSizes.lg),
               Text(
                 text,
-                style: DSType.largeBold(
-                  textColor: DSColors.headingDark,
+                style: DSType.h6(
+                  textColor: DSColors.primaryFontColor,
                 ),
                 overflow: TextOverflow.ellipsis,
                 softWrap: true,

@@ -69,7 +69,7 @@ class InputField extends StatelessWidget {
         TextFormField(
           autofocus: autoFocus,
           controller: controller,
-          cursorColor: DSColors.headingDark,
+          cursorColor: DSColors.secondaryFontColor,
           inputFormatters: inputFormatters,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.only(
@@ -86,7 +86,7 @@ class InputField extends StatelessWidget {
               ),
               borderSide: BorderSide(
                 width: 1,
-                color: DSColors.borderDark,
+                color: DSColors.secondary,
               ),
             ),
             disabledBorder: const OutlineInputBorder(
@@ -128,7 +128,7 @@ class InputField extends StatelessWidget {
             isCollapsed: true,
             hintText: placeholder,
             hintStyle: DSType.body2(
-              textColor: DSColors.linkDark,
+              textColor: DSColors.placeHolderColor,
             ),
           ),
           enabled: enabled,

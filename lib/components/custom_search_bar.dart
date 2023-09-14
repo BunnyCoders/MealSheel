@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:meal_sheal/core/design_system.dart';
 
@@ -21,10 +22,13 @@ class CustomSearchBar extends StatelessWidget {
             left: DSSizes.md,
           ),
           prefixIcon: Icon(
-            Icons.search_rounded,
+            Icons.search,
             color: DSColors.placeHolderDark,
           ),
           hintText: "Search Food",
+          hintStyle: DSType.body1(
+            textColor: DSColors.secondaryFontColor,
+          ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(
@@ -33,7 +37,7 @@ class CustomSearchBar extends StatelessWidget {
             ),
             borderSide: BorderSide(
               width: 1,
-              color: DSColors.borderDark,
+              color: DSColors.placeHolderColor,
             ),
           ),
           enabledBorder: OutlineInputBorder(
@@ -44,7 +48,7 @@ class CustomSearchBar extends StatelessWidget {
             ),
             borderSide: BorderSide(
               width: 1,
-              color: DSColors.borderDark,
+              color: DSColors.placeHolderColor,
             ),
           ),
           filled: true,

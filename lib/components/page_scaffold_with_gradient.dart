@@ -15,6 +15,8 @@ class PageScaffoldWithGradient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      backgroundColor: DSColors.secondary,
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -24,16 +26,14 @@ class PageScaffoldWithGradient extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                DSColors.headingLight,
+                DSColors.secondary,
                 // DSColors.primaryLight,
-                DSColors.headingLight,
+                DSColors.secondary,
               ],
             ),
           ),
-          child: SafeArea(
-            child: SingleChildScrollView(
-              child: child,
-            ),
+          child: SingleChildScrollView(
+            child: child,
           ),
         ),
       ),

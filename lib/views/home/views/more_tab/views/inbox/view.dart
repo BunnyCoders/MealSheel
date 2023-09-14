@@ -79,8 +79,14 @@ class _InboxViewState extends State<InboxView> {
   Widget build(BuildContext context) {
     _viewModel = Provider.of<InboxViewModel>(context);
     return PageScaffold(
-      appBar: CustomAppBar(context: context, text: "Inbox"),
-      children: [_buildUI()],
+      appBar: CustomAppBar(
+        context: context,
+        text: "Inbox",
+        isShowCart: true,
+      ),
+      children: [
+        _buildUI(),
+      ],
     );
   }
 }

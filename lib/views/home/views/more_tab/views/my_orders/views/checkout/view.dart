@@ -70,7 +70,7 @@ class _CheckoutViewState extends State<CheckoutView> {
               Expanded(
                 child: Text(
                   "Expiry",
-                  style: DSType.subtitle2(textColor: DSColors.linkDark),
+                  style: DSType.subtitle2(textColor: DSColors.primaryFontColor),
                 ),
               ),
               const SizedBox(
@@ -138,7 +138,7 @@ class _CheckoutViewState extends State<CheckoutView> {
             children: [
               Text(
                 "You can remove this card at any time",
-                style: DSType.subtitle2(textColor: DSColors.linkDark),
+                style: DSType.subtitle2(textColor: DSColors.primaryFontColor),
               ),
               CupertinoSwitch(
                 value: true,
@@ -169,27 +169,33 @@ class _CheckoutViewState extends State<CheckoutView> {
   Widget _deliveryAddress() {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(
+          left: DSSizes.md,
+          right: DSSizes.md,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               "Delivery Address",
-              style: DSType.subtitle1(textColor: DSColors.placeHolderDark),
+              style: DSType.subtitle2(textColor: DSColors.placeHolderDark),
             ),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   children: [
                     Text(
                       "653 Nostrad Ave.",
-                      style: DSType.subtitle1(textColor: DSColors.linkDark),
+                      style: DSType.subtitle1(
+                          textColor: DSColors.primaryFontColor),
                     ),
                     Text(
                       "Brooklyn, NY 11216",
-                      style: DSType.subtitle1(textColor: DSColors.linkDark),
+                      style: DSType.subtitle1(
+                          textColor: DSColors.primaryFontColor),
                     ),
                   ],
                 ),
@@ -257,9 +263,9 @@ class _CheckoutViewState extends State<CheckoutView> {
   Widget _paymentMethodType({required String text}) => Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
-          height: 35,
+          height: 40,
           decoration: const BoxDecoration(
-            color: DSColors.linkLight,
+            color: DSColors.backgroundBodyGrey,
             shape: BoxShape.rectangle,
             border: Border(
               left: BorderSide(
@@ -287,11 +293,11 @@ class _CheckoutViewState extends State<CheckoutView> {
               children: [
                 Text(
                   text,
-                  style: DSType.subtitle2(textColor: DSColors.linkDark),
+                  style: DSType.subtitle2(textColor: DSColors.primaryFontColor),
                 ),
                 const Icon(
                   Icons.circle_outlined,
-                  size: 20,
+                  size: 16,
                   color: DSColors.primary,
                 )
               ],
@@ -330,7 +336,7 @@ class _CheckoutViewState extends State<CheckoutView> {
                             Text(
                               "Add credit/debit card",
                               style: DSType.subtitle1(
-                                  textColor: DSColors.linkDark),
+                                  textColor: DSColors.primaryFontColor),
                             ),
                             GestureDetector(
                                 onTap: () {
@@ -339,7 +345,7 @@ class _CheckoutViewState extends State<CheckoutView> {
                                 child: const Icon(
                                   Icons.close,
                                   size: 25,
-                                  color: DSColors.linkDark,
+                                  color: DSColors.primaryFontColor,
                                 )),
                           ],
                         ),
@@ -361,6 +367,53 @@ class _CheckoutViewState extends State<CheckoutView> {
             ));
   }
 
+  Future<dynamic> _orderPlaced() {
+    return showModalBottomSheet(
+        elevation: 10,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(25.0),
+        ),
+        context: context,
+        builder: (context) => DraggableScrollableSheet(
+              expand: false,
+              initialChildSize: 0.8,
+              maxChildSize: 0.8,
+              minChildSize: 0.28,
+              builder: (context, scrollController) => SingleChildScrollView(
+                controller: scrollController,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: DSSizes.sm,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Icon(
+                                Icons.close,
+                                size: 25,
+                                color: DSColors.primaryFontColor,
+                              )),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: DSSizes.sm,
+                      ),
+                      _orderPlacedThanksText()
+                    ],
+                  ),
+                ),
+              ),
+            ));
+  }
+
   Widget _subTotal() => Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
@@ -368,11 +421,11 @@ class _CheckoutViewState extends State<CheckoutView> {
           children: [
             Text(
               "subtotal",
-              style: DSType.subtitle1(textColor: DSColors.linkDark),
+              style: DSType.subtitle1(textColor: DSColors.primaryFontColor),
             ),
             Text(
               "68",
-              style: DSType.subtitle1(textColor: DSColors.linkDark),
+              style: DSType.subtitle1(textColor: DSColors.primaryFontColor),
             ),
           ],
         ),
@@ -385,11 +438,11 @@ class _CheckoutViewState extends State<CheckoutView> {
           children: [
             Text(
               "Delivery Cost",
-              style: DSType.subtitle1(textColor: DSColors.linkDark),
+              style: DSType.subtitle1(textColor: DSColors.primaryFontColor),
             ),
             Text(
               "02",
-              style: DSType.subtitle1(textColor: DSColors.linkDark),
+              style: DSType.subtitle1(textColor: DSColors.primaryFontColor),
             ),
           ],
         ),
@@ -402,11 +455,11 @@ class _CheckoutViewState extends State<CheckoutView> {
           children: [
             Text(
               "Total",
-              style: DSType.subtitle1(textColor: DSColors.linkDark),
+              style: DSType.subtitle1(textColor: DSColors.primaryFontColor),
             ),
             Text(
               "66",
-              style: DSType.subtitle1(textColor: DSColors.linkDark),
+              style: DSType.subtitle1(textColor: DSColors.primaryFontColor),
             ),
           ],
         ),
@@ -419,11 +472,11 @@ class _CheckoutViewState extends State<CheckoutView> {
           children: [
             Text(
               "Discount",
-              style: DSType.subtitle1(textColor: DSColors.linkDark),
+              style: DSType.subtitle1(textColor: DSColors.primaryFontColor),
             ),
             Text(
               "-4",
-              style: DSType.subtitle1(textColor: DSColors.linkDark),
+              style: DSType.subtitle1(textColor: DSColors.primaryFontColor),
             ),
           ],
         ),
@@ -434,10 +487,55 @@ class _CheckoutViewState extends State<CheckoutView> {
       padding: const EdgeInsets.all(32.0),
       child: Button(
         background: DSColors.primary,
-        onPressed: () => _viewModel.onTapSendOrderButton(context: context),
+        onPressed: () => _orderPlaced(),
         text: "Send Order",
-        textColor: DSColors.backgroundBodyLight,
+        textColor: DSColors.secondary,
       ),
+    );
+  }
+
+  Widget _orderPlacedThanksText() {
+    return Column(
+      children: [
+        Image.asset(
+          "assets/images/thankyou.png",
+          height: MediaQuery.of(context).size.height*0.40,
+          width: MediaQuery.of(context).size.width,
+        ),
+        const SizedBox(
+          height: DSSizes.md,
+        ),
+        Text(
+          "Thank you!",
+          style: DSType.subtitle2(textColor: DSColors.primaryFontColor),
+        ),
+        Text(
+          "for your Order",
+          style: DSType.subtitle2(textColor: DSColors.primaryFontColor),
+        ),
+        Text(
+          "Your Order is now being placed.We will let you know once the order is placed from the outlet \n CHeck the status of your order",
+          style: DSType.caption(textColor: DSColors.secondaryFontColor),
+        ),
+        const SizedBox(
+          height: DSSizes.sm,
+        ),
+        Button(
+          background: DSColors.primary,
+          onPressed: () {},
+          text: "Track your Order",
+          textColor: DSColors.backgroundBodyLight,
+        ),
+        SizedBox(
+          height: DSSizes.md,
+        ),
+        Button(
+          background: DSColors.secondary,
+          onPressed: () => _viewModel.onTapBackToHome(context: context),
+          text: "Back To Home",
+          textColor: DSColors.primary,
+        )
+      ],
     );
   }
 
@@ -445,16 +543,16 @@ class _CheckoutViewState extends State<CheckoutView> {
     return Center(
       child: Column(
         children: [
-          const SizedBox(
-            height: DSSizes.md,
-          ),
+          // const SizedBox(
+          //   height: DSSizes.xs,
+          // ),
           _deliveryAddress(),
           const Divider(
-            thickness: 8,
+            thickness: 12,
           ),
           _paymentMethods(),
           const Divider(
-            thickness: 8,
+            thickness: 12,
           ),
           _subTotal(),
           _deliveryCost(),
@@ -464,7 +562,7 @@ class _CheckoutViewState extends State<CheckoutView> {
           ),
           _total(),
           const Divider(
-            thickness: 8,
+            thickness: 12,
           ),
           _sendOrderButton(),
         ],
@@ -477,7 +575,9 @@ class _CheckoutViewState extends State<CheckoutView> {
     return PageScaffold(
       appBar:
           CustomAppBar(context: context, text: "Checkout", isShowCart: false),
-      children: [_buildUI()],
+      children: [
+        _buildUI(),
+      ],
     );
   }
 }

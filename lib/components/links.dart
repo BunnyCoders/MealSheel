@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -18,11 +20,20 @@ class Links extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: DSSizes.xl,
-        decoration: const BoxDecoration(color: DSColors.backgroundBodyGrey),
-        child: Padding(
+        onTap: onTap,
+        child: Card(
+          elevation: 3,
+          borderOnForeground: true,
+          shadowColor: DSColors.placeHolderColor,
+          surfaceTintColor: DSColors.secondary,
+          // shape: RoundedRectangleBorder(
+          //   side: BorderSide.none,
+          //   borderRadius: BorderRadius.only(
+          //     topRight: Radius.circular(30.0),
+          //     bottomRight: Radius.circular(30.0),
+          //   ),
+          // ),
+          child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -30,16 +41,16 @@ class Links extends StatelessWidget {
                 Row(
                   children: [
                     Container(
-                      height: 60,
-                      width: 60,
+                      height: DSSizes.lg,
+                      width: DSSizes.xl,
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
-                        color: DSColors.placeHolderDark,
+                        color: DSColors.placeHolderColor,
                       ),
                       child: Center(
                         child: SvgPicture.asset(
                           iconPath,
-                          color: DSColors.linkDark,
+                          color: DSColors.primaryFontColor,
                           height: 20,
                           width: 20,
                         ),
@@ -50,23 +61,19 @@ class Links extends StatelessWidget {
                     ),
                     Text(
                       text,
-                      style: DSType.subtitle1(textColor: DSColors.linkDark),
+                      style: DSType.subtitle1(
+                          textColor: DSColors.primaryFontColor),
                     ),
                   ],
                 ),
-                const CircleAvatar(
-                  radius: 15,
-                  backgroundColor: DSColors.placeHolderDark,
-                  child: Center(
-                      child: Icon(
-                    Icons.arrow_forward_ios,
-                    size: 15,
-                    color: DSColors.linkDark,
-                  )),
-                )
+                const Icon(
+                  Icons.arrow_forward_ios,
+                  size: DSSizes.md,
+                  color: DSColors.primaryFontColor,
+                ),
               ],
-            )),
-      ),
-    );
+            ),
+          ),
+        ));
   }
 }
