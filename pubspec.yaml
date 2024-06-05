@@ -45,9 +45,13 @@ dependencies:
   country_code_picker: ^2.0.2
   introduction_screen: ^3.1.1
   google_maps_flutter: ^2.2.2
-  geolocator: ^9.0.2
+  geolocator: ^10.0.1
   url_launcher: ^6.1.7
   curved_navigation_bar: ^1.0.3
+  flutter_spinkit: ^5.2.0
+  location: ^5.0.3
+  flutter_polyline_points: ^1.0.0
+  geocoding: ^2.1.0
   
 
 

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../core/locator.dart';
-import '../../core/share_data_view_model.dart';
+import '../../core/share_data_layer.dart';
 
 class ResetPasswordViewModel extends ChangeNotifier {
-  final SharedDataViewModel _sharedDataViewModel =
-      locator<SharedDataViewModel>();
-final bool _isLoading = false;
+  final SharedDataLayer _sharedDataLayer = locator<SharedDataLayer>();
+  final bool _isLoading = false;
 
   final String _errorMessage = "";
 
@@ -25,7 +24,6 @@ final bool _isLoading = false;
     return null;
   }
 
-
   Future<void> onTapSend({
     required BuildContext context,
     required formKey,
@@ -36,4 +34,3 @@ final bool _isLoading = false;
     }
   }
 }
-

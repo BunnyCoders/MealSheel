@@ -4,8 +4,8 @@ class DSColors {
   // primary colors
   static const Color primary = Color.fromRGBO(252, 96, 17, 1);
   static const Color secondary = Color.fromRGBO(255, 255, 255, 1);
-  static const Color primaryFontColor = Color.fromRGBO(74, 75, 77, 1);
-  static const Color secondaryFontColor = Color.fromRGBO(124, 125, 126, 1);
+  static const Color primaryFontColor = Color.fromRGBO(59,59,59, 1);
+  static const Color secondaryFontColor = Color.fromRGBO(169, 169, 169, 1);
   static const Color placeHolderColor = Color.fromRGBO(182, 187, 187, 1);
 
   // default system colors

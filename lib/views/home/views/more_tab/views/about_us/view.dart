@@ -3,6 +3,8 @@ import 'package:meal_sheal/components/appbar.dart';
 import 'package:meal_sheal/components/custom_appbar.dart';
 import 'package:meal_sheal/components/page_scaffold.dart';
 import 'package:meal_sheal/core/design_system.dart';
+import 'package:meal_sheal/views/home/views/more_tab/views/about_us/view_model.dart';
+import 'package:provider/provider.dart';
 
 class AboutUsView extends StatefulWidget {
   const AboutUsView({super.key});
@@ -12,6 +14,8 @@ class AboutUsView extends StatefulWidget {
 }
 
 class _AboutUsViewState extends State<AboutUsView> {
+  late AboutUsViewModel _viewModel;
+
   Widget _aboutUsText() => Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -33,26 +37,46 @@ class _AboutUsViewState extends State<AboutUsView> {
             const SizedBox(
               height: DSSizes.md,
             ),
-            _aboutUsText(),
-            const SizedBox(
-              height: DSSizes.sm,
-            ),
-            _aboutUsText(),
-            const SizedBox(
-              height: DSSizes.md,
-            ),
-            _aboutUsText(),
-            const SizedBox(
-              height: DSSizes.md,
-            ),
+            _getLocation()
+            // _aboutUsText(),
+            // const SizedBox(
+            //   height: DSSizes.sm,
+            // ),
+            // _aboutUsText(),
+            // const SizedBox(
+            //   height: DSSizes.md,
+            // ),
+            // _aboutUsText(),
+            // const SizedBox(
+            //   height: DSSizes.md,
+            // ),
           ],
         ),
       ),
     );
   }
 
+  Widget _getLocation() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('LAT: ${_viewModel.currentPosition?.latitude ?? ""}'),
+          Text('LNG: ${_viewModel.currentPosition?.longitude ?? ""}'),
+          Text('ADDRESS: ${_viewModel.currentAddress ?? ""}'),
+          const SizedBox(height: 32),
+          ElevatedButton(
+            onPressed: ()=>_viewModel.getCurrentPosition(),
+            child: const Text("Get Current Location"),
+          )
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    _viewModel = Provider.of<AboutUsViewModel>(context);
     return PageScaffold(
       appBar: CustomAppBar(
         context: context,

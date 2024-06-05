@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:meal_sheal/components/custom_appbar.dart';
 import 'package:meal_sheal/components/custom_search_bar.dart';
@@ -21,18 +22,23 @@ class MenuTabView extends StatefulWidget {
 
 class _MenuTabViewState extends State<MenuTabView> {
   late MenuTabViewModel _viewModel;
-  Widget _searchBar() {
-    return CustomSearchBar();
+
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _viewModel.init(context: context);
+    });
   }
 
-  Widget _buildUI() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _searchBar(),
-        _menuLinks(),
-      ],
-    );
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  Widget _searchBar() {
+    return CustomSearchBar();
   }
 
   Widget _menuLinks() {
@@ -145,7 +151,200 @@ class _MenuTabViewState extends State<MenuTabView> {
     );
   }
 
-  
+  Widget _productsList() {
+    return _viewModel.products.data != null
+        ? ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: _viewModel.products.data!.length,
+            itemBuilder: ((context, index) {
+              var _product = _viewModel.products.data![index];
+              return Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: () {},
+                          child: Container(
+                            height: 100,
+                            width: 100,
+                            decoration: BoxDecoration(
+                              color: DSColors.placeHolderDark,
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                image: NetworkImage(_product.image.toString()),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: DSSizes.md,
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              _product.name.toString(),
+                              style: DSType.h6(
+                                  textColor: DSColors.primaryFontColor),
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.star,
+                                  color: DSColors.primary,
+                                  size: 15,
+                                ),
+                                Text(
+                                  "4.9",
+                                  style: DSType.subtitle2(
+                                      textColor: DSColors.primary),
+                                ),
+                                Text(
+                                  "(124 ratings) Cafe",
+                                  style: DSType.subtitle2(
+                                      textColor: DSColors.placeHolderDark),
+                                ),
+                              ],
+                            ),
+                            Text(
+                              "Western Food Cafe",
+                              style: DSType.subtitle2(
+                                  textColor: DSColors.placeHolderDark),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              );
+            }),
+          )
+        : Container(
+            child: Text(
+              "No data found",
+              style: DSType.subtitle2(textColor: DSColors.error),
+            ),
+          );
+  }
+
+  Widget _categoriesList() {
+    return _viewModel.categories.data != null
+        ? ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: _viewModel.categories.data!.length,
+            itemBuilder: ((context, index) {
+              var _category = _viewModel.categories.data![index];
+              return Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: () {},
+                          child: Container(
+                            height: 100,
+                            width: 100,
+                            decoration: BoxDecoration(
+                              color: DSColors.placeHolderDark,
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                image: NetworkImage(_category.image.toString()),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: DSSizes.md,
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              _category.name.toString(),
+                              style: DSType.h6(
+                                  textColor: DSColors.primaryFontColor),
+                            ),
+                            // Row(
+                            //   children: [
+                            //     Icon(
+                            //       Icons.star,
+                            //       color: DSColors.primary,
+                            //       size: 15,
+                            //     ),
+                            //     Text(
+                            //       "4.9",
+                            //       style: DSType.subtitle2(
+                            //           textColor: DSColors.primary),
+                            //     ),
+                            //     Text(
+                            //       "(124 ratings) Cafe",
+                            //       style: DSType.subtitle2(
+                            //           textColor: DSColors.placeHolderDark),
+                            //     ),
+                            //   ],
+                            // ),
+                            // Text(
+                            //   "Western Food Cafe",
+                            //   style: DSType.subtitle2(
+                            //       textColor: DSColors.placeHolderDark),
+                            // ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              );
+            }),
+          )
+        : Container(
+            child: Text(
+              "No data found",
+              style: DSType.subtitle2(textColor: DSColors.error),
+            ),
+          );
+  }
+
+  Widget _buildUI() {
+    return _viewModel.isLoading
+        ? Center(child: _getLoadingUI())
+        : Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _searchBar(),
+              _menuLinks(),
+              // _productsList(),
+              // _categoriesList()
+            ],
+          );
+  }
+
+  Widget _getLoadingUI() {
+    return Center(
+      child: SpinKitFadingCircle(
+        size: DSSizes.xl,
+        itemBuilder: (BuildContext context, int index) {
+          return DecoratedBox(
+            decoration: BoxDecoration(
+              color: index.isEven ? Colors.red : Colors.green,
+            ),
+            child: Text(
+              "Loading..",
+              style: DSType.subtitle2(textColor: DSColors.bodyDark),
+            ),
+          );
+        },
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
