@@ -1,19 +1,15 @@
-# meal_sheal
+# Meal Sheal
+-------------  
+### To try the app download the apk from the [Release Tab](https://github.com/mohammedhashim44/Flutter-Grocery-App-UI/releases/download/1.0.0/app-release.apk)  
+-------------
+  
+#### Flutter Version Used : 3.17.0
+#### Design Credit : Akila Weerakoon  
+#### Design Files on Adobe XD : [Meal Monkey Food Delivery App UI]([https://www.figma.com/community/file/88264500795633726](https://www.behance.net/gallery/108639283/Meal-Monkey-Food-delivery-iOS-mobile-application?ref=uistore.design))  
+ 
+-------------  
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Directory Tree
 ```
 ├───📁 components/
 │   ├───📄 appbar.dart
@@ -94,19 +90,33 @@ samples, guidance on mobile development, and a full API reference.
 └───📄 main.dart
  
 ```
-
+## ScreenShots  
 <p float="left">
-  <img src="screenshots/1.jpg" width="200" />
-  <img src="screenshots/2.jpg" width="200" /> 
-  <img src="screenshots/3.jpg" width="200" />
-  <img src="screenshots/4.jpg" width="200" />
-  <img src="screenshots/5.jpg" width="200" /> 
-  <img src="screenshots/6.jpg" width="200" />
-  <img src="screenshots/7.jpg" width="200" />
-  <img src="screenshots/8.jpg" width="200" /> 
-  <img src="screenshots/9.jpg" width="200" />
-  <img src="screenshots/10.jpg" width="200" />
-  <img src="screenshots/11.jpg" width="200" />
-  <img src="screenshots/12.jpg" width="200" />
-  <img src="screenshots/13.jpg" width="200" />
+  <img src="screenshots/1.png" width="200" />
+  <img src="screenshots/2.png" width="200" /> 
+  <img src="screenshots/3.png" width="200" />
+  <img src="screenshots/4.png" width="200" />
+  <img src="screenshots/5.png" width="200" /> 
+  <img src="screenshots/6.png" width="200" />
+  <img src="screenshots/7.png" width="200" />
+  <img src="screenshots/8.png" width="200" /> 
+  <img src="screenshots/9.png" width="200" />
+  <img src="screenshots/10.png" width="200" />
+  <img src="screenshots/11.png" width="200" />
+  <img src="screenshots/12.png" width="200" />
+  <img src="screenshots/13.png" width="200" />
 </p>
+
+-------------  
+
+## Screens  
+- Login Screen  
+- Signup Screen  
+- Home Screen  
+- Menus Scrren  
+- Profile Screen  
+- More Screen
+- Notification Screen  
+- Payment details  
+- Checkout Bottom Sheet    
+- Order Accepted Screen  
