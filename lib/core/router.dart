@@ -12,7 +12,6 @@ import 'package:meal_sheal/views/home/views/more_tab/views/payment_details/view.
 import 'package:meal_sheal/views/home/views/offers_tab/view.dart';
 import 'package:meal_sheal/views/home/views/profile_tab/view.dart';
 import 'package:meal_sheal/views/onboarding/view.dart';
-import 'package:meal_sheal/views/reset_password/view_model.dart';
 
 import '../views/change_password/view.dart';
 import '../views/home/view.dart';

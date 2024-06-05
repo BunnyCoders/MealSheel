@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../core/locator.dart';
-import '../../core/share_data_view_model.dart';
+import '../../core/share_data_layer.dart';
 
 class HomeViewModel extends ChangeNotifier {
-  final SharedDataViewModel _sharedDataViewModel =
-      locator<SharedDataViewModel>();
+  final SharedDataLayer _sharedDataLayer = locator<SharedDataLayer>();
 
-   final bool _isLoading = false;
+  final bool _isLoading = false;
 
   final String _errorMessage = "";
 
@@ -18,5 +17,4 @@ class HomeViewModel extends ChangeNotifier {
   String get errorMessage {
     return _errorMessage;
   }
-
 }

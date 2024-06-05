@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:meal_sheal/core/locator.dart';
-import 'package:meal_sheal/core/share_data_view_model.dart';
+import 'package:meal_sheal/core/models/products_data_model.dart';
+import 'package:meal_sheal/core/share_data_layer.dart';
 
 class HomeTabViewModel extends ChangeNotifier {
-  final SharedDataViewModel _sharedDataViewModel =
-      locator<SharedDataViewModel>();
+  final SharedDataLayer _sharedDataLayer = locator<SharedDataLayer>();
+
+  bool _isLoading = false;
+
+  get isLoading {
+    return _isLoading;
+  }
 
   List<String> get imagesPaths {
     return _imagesPaths;
@@ -13,6 +19,7 @@ class HomeTabViewModel extends ChangeNotifier {
   List<String> get popularRestaurantsImagesPaths {
     return _popularRestaurantsImagesPaths;
   }
+
   List<String> get popularRestaurantsNames {
     return _popularRestaurantsNames;
   }
@@ -53,4 +60,9 @@ class HomeTabViewModel extends ChangeNotifier {
     "sri lankan",
     "french",
   ];
+
+  setLoading(bool loading) async {
+    _isLoading = loading;
+    notifyListeners();
+  }
 }

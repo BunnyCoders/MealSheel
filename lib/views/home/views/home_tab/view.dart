@@ -19,6 +19,8 @@ class HomeTabView extends StatefulWidget {
 
 class _HomeTabViewState extends State<HomeTabView> {
   late HomeTabViewModel _viewModel;
+
+
   @override
   Widget _userLocation() {
     return Padding(
@@ -330,6 +332,7 @@ class _HomeTabViewState extends State<HomeTabView> {
           _userLocation(),
           _searchBar(),
           _categories(),
+          // _productsList(),
           _popularRestaurants(),
           _popularRestuantsPosts(),
           _mostPopular(),
